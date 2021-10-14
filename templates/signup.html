@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% block title %} SignUp {% endblock %}
+{% block head %}
+{{ super() }}
+<style>
+    #signup-main {
+        margin: 80px;
+        width: 550px;
+        height: 430px;
+        background-color: black;
+        border-radius: 20px;
+    }
+    #signup-head {
+        border-style: double;
+        border-width: 15px;
+        border-radius: 20px;
+        border-color: yellow;
+        margin: 20px 0px 20px 0px;
+        display: inline-block;
+        background-color: black;
+        width: 200px;
+        font-size: 28px;
+        padding: 10px 20px;
+    }
+    #signup-head h1 {
+        text-align: center;
+        padding: 20px;
+        display: inline-block;
+    }
+    .label {
+        text-align: right;
+        display: block;
+        margin: 25px 50px; 
+    }
+    #sub {
+        margin: 12px;
+        padding: 10px 20px;
+        color: black;
+        background-color: yellow;
+        font-size: 20px;
+        font-weight: bolder;
+        border-radius: 12px;
+    }
+    #res {
+        padding: 10px 20px;
+        color: black;
+        background-color: yellow;
+        font-size: 20px;
+        font-weight: bolder;
+        border-radius: 12px;
+        display: inline-block;
+        margin: 12px;
+    }
+    .entry {
+        color: rgb(5, 5, 136);
+        font-size: 18px;
+        height: 26px;
+        width: 190px;
+        text-align: center;
+        border-radius: 0 10px;
+        outline-style: none;
+    }
+    #signup-tail {
+        width: 550px;
+        height: 300px;
+    }
+    h3 {
+        display: inline-block;
+    }
+    #label {
+        display: float;
+        float: left;
+        width: 50%;
+        height: 70%;
+    }
+    #entry-div {
+        float: left;
+        width: 50%;
+        margin-top: 20px;
+        margin-left: -50px;
+    }
+    #pass-entry {
+        margin-top: 20px;
+    }
+    #email-entry {
+        margin-top: 20px;
+    }
+    #mobile-entry {
+        margin-top: 20px;
+    }
+    #foot {
+        float: left;
+        height: 30%;
+        width: 100%;
+    }
+    h2 {
+        color: red;
+        text-align: center;
+        height: 20px;
+        padding: 10px;
+    }
+</style>
+{% endblock %}
+{% block content %}
+    <h2>{{regmsg}}</h2>
+    <center>
+        <div id="signup-main">
+            <form action="http://127.0.0.1:5000/profile/newuser" method="POST">
+                <div id="signup-head">
+                    <h1">Signup Form</h1>
+                </div>
+                <div id="signup-tail">
+                    <div id="label">
+                        <h3 class="label">User Name : </h3>
+                        <h3 class="label">Create Password : </h3>
+                        <h3 class="label">Email : </h3>
+                        <h3 class="label">Mobile : </h3>
+                    </div>
+                    <div id="entry-div">
+                        <input class="entry" id="name-entry" type="name" name="Name" required>
+                        <input class="entry" id="pass-entry" type="password" name="Password" required>
+                        <input class="entry" id="email-entry" type="email" name="Email" required>
+                        <input class="entry" id="mobile-entry" type="number" name="Mobile" required>
+                    </div>
+                    <div id="foot">
+                        <input id="sub" type="submit" value="Signup">
+                        <input id="res" type="reset" value="Reset">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </center>
+{% endblock %}

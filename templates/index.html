@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock %}
+{% block head %}
+{{ super() }}
+<style>
+    h1 {
+        color: black;
+        margin: 10px 90px;
+        display: inline-block;
+    }
+    h3 {
+        margin: 10px 90px;
+        display: inline-block;
+        color: red;
+    }
+    .image1 {
+        width: 700px;
+        box-sizing: border-box;
+        box-shadow:0 15px 30px rgba(0,0,0,30),0 11px 8px rgba(0,0,0,22);
+        transition-duration:1s;
+    }
+    .image1>img {
+        width: 700px;
+        padding: 0px;
+        /* display: block; */
+    }
+    .image1:hover {
+        box-shadow:0 18px 36px rgba(0,0,0,30),0 14px 11px rgba(0,0,0,22);
+        width: 760px;
+    }
+    center {
+        height: 80vh;
+        background-image: url(../static/images/forth.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+{% endblock %}
+{% block content %}
+    <h1>Welcome to Order4Shopping</h1>
+    <h3>{{loginmsg}}{{regmsg}}{{alertmsg}}</h3>
+    <center>
+        <div class="image1">
+            <img id="first" src="../static/images/sixth.png" alt="Image not loaded">
+        </div>
+    </center>
+{% endblock %}

@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+#main {
+    width : 100%;
+}
+.menu {
+    height: 80px;
+
+    background-color: black;
+}
+.menu ul {
+    height: 80px;
+}
+.menu li {
+    display: inline-block;
+    height: 80px;
+}
+.menu a {
+    font-size: 24px;
+    text-decoration: none;
+    display: inline-block;
+    margin: 18px 60px;
+    padding: 10px 20px;
+    text-align: center;
+}
+.menu a:hover {
+    background-color: yellow;
+    color: black;
+    border-radius: 20px;
+}

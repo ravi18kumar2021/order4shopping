@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'style.css')}}">
+    <title>Document</title>
+    <script src="{{url_for('static',filename = 'jquery-3.6.0.js')}}"></script>
+    <style>
+        .body {
+            width: 100vw;
+            height: 1300px;
+        }
+        .left {
+            width: 25%;
+        }
+        .left td {
+            color: black;
+        }
+        #left {
+            float: left;
+            width: 20%;
+            height: 1300px;
+
+            
+        }
+        .left table {
+            border: 2px solid gray;
+        }
+        #center {
+            float: left;
+            height: 1300px;
+            width: 80%;
+
+        }
+        .center {
+            font-size: large;
+            background-color: black;
+            border-color: yellow;
+            border-width: 5px;
+            border-spacing: 5px;
+            width: 90%;
+            border-radius: 16px;
+            margin: 30px;
+            padding: 10px;
+        }
+        .center th {
+            text-align: center;
+            padding: 20px;
+            text-decoration: underline;
+            border-style: none;
+        }
+        .center td {
+            text-align: right;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .center option {
+            font-size: larger;
+            color: black;
+        }
+        /* #right {
+            float: left;
+            height: 1300px;
+            width: 35%;
+            background-color: brown;
+        } */
+        .category-head {
+            color: black;
+            font-size: large;
+            margin: 20px;
+        }
+        .dropdown1{
+            color: black;
+            font-size: medium;
+            background-color: gray;
+            margin: 10px 0 20px 50px;
+            height: 30px;
+        }
+        .cart-btn {
+            color: black;
+            width: 100px;
+            height: 40px;
+            background-color: yellow;
+            font-weight: bold;
+            border-style: none;
+        }
+        h2 {
+            margin: 40px 0 10px 50px;
+            color: black;
+        }
+        #search {
+            font-weight: bolder;
+            background-color: black;
+            color: yellow;
+            margin: 10px 40px 20px 60px;
+            display: inline-block;
+            font-size: larger;
+            padding: 12px 18px;
+            border-radius: 10px;
+        }
+        #last {
+            border-style: none;
+        }
+        .dropdown2 {
+            width: 80px;
+            height: 30px;
+            color: black;
+            font-size: 18px;
+        }
+        .cart-btn:hover {
+            box-shadow: 0 0 6px yellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+    	<div class="menu">
+    		<ul>
+    			<li><a href="{{url_for('loginhome')}}">Home</a></li>
+    			<li><a href="{{url_for('profile')}}">Profile</a></li>
+                <li><a href="{{url_for('shopping')}}">Products</a></li>
+                <li><a href="" id="my-contact">Contacts</a></li>
+                <li><a href="{{url_for('logout')}}">Logout</a></li>
+    		</ul>
+    	</div>
+	</div>
+    <div class="body">
+
+        <div id="left">
+            <h2>Select Category</h2>
+            <form action="{{url_for('shopping')}}" method="POST">
+            <select name="shop-item" id="category" class="dropdown1">
+                <option value="pen">Pen/Pencil</option>
+                <option value="sharpener">Sharpeners</option>
+                <option value="eraser">Erasers</option>
+                <option value="notebook">Notebook</option>
+                <option value="oil">Oil</option>
+                <option value="rice">Rice</option>
+                <option value="dal">Dal</option>
+                <option value="maggi">Maggi</option>
+                <option value="toothpaste">Toothpaste</option>
+                <option value="horlicks">Horlicks</option>
+                <option value="soap">Soaps</option>
+                <option value="detergent">Detergent</option>
+                
+            </select>
+            <button id="search" type="submit">Search</button>
+            </form>
+
+            </div>
+        <div id="center">
+        <table class="center" border="2">
+            <tr>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Product Price</th>
+                <th>Unit Quantity</th>
+                <th>Select Quantity</th>
+
+            </tr>
+            {% for pid,pname,pcost,punit in data %}
+            <tr>
+                <td>{{pid}}</td>
+                <td>{{pname}}</td>
+                <td>{{pcost}}</td>
+                <td>{{punit}}</td>
+                <form action="{{url_for('process')}}" class="cart-add">
+                <td>
+                    <select name="selection" id="qtyvalue" class="dropdown2">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </td>
+                
+                <td id="last">
+                    <button class="cart-btn" type="submit" >Order Now</button>
+                </td>
+                </form>
+            </tr>
+            {% endfor %}
+        </table>
+        </div>
+
+    </div>
+    <script>
+        $(document).ready(function(){
+            $('.cart-btn').click(function(){
+                $(this).html('Ordered');
+                $(this).attr('disabled','disabled');
+                $(this).css('box-shadow','none');
+            });
+            $('#my-contact').click(function(){
+				var txt = 'Contact No. : 6204321556 & Email : ravikumar18.2014@gmail.com';
+				alert(txt);
+			});
+        });
+    </script>
+</body>
+</html>
